@@ -16,6 +16,17 @@ public class Restaurant {
         this.closingTime = closingTime;
     }
 
+    //TDD Method
+    public int getTotalOfSelectedItems(List<String> itemList) {
+        int total = 0;
+        for (String itemName : itemList) {
+            Item item = findItemByName(itemName);
+            if(null != item)
+                total += item.getPrice();
+        }
+        return total;
+    }
+
     public boolean isRestaurantOpen() {
         LocalTime timeNow = getCurrentTime();
         if (timeNow.equals(openingTime) || timeNow.equals(closingTime)) {
